@@ -20,7 +20,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      - name: Upload website files to S3
+      - name: Upload bountyvine website files to S3
         run: |
           aws s3 sync . s3://bountyvine-static-website-bucket-2026 \
             --delete \
