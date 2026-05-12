@@ -496,7 +496,7 @@
     }
 
     .services {
-      background: var(--soft);
+      background: #fbf7ee;
     }
 
     .service-grid {
@@ -506,11 +506,12 @@
     }
 
     .service-item {
-      min-height: 145px;
+      min-height: 156px;
       padding: 20px;
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: var(--white);
+      box-shadow: 0 10px 24px rgba(6, 63, 42, 0.06);
     }
 
     .service-item strong {
@@ -525,10 +526,19 @@
       font-size: 0.94rem;
     }
 
+    .service-item small {
+      display: inline-block;
+      color: #8b5e50;
+      font-size: 0.76rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
     .skincare-panel {
       margin-top: 24px;
       display: grid;
-      grid-template-columns: 0.85fr 1.15fr;
+      grid-template-columns: 0.95fr 1.05fr;
       gap: 22px;
       align-items: stretch;
     }
@@ -536,7 +546,7 @@
     .skincare-feature {
       min-height: 100%;
       background:
-        linear-gradient(135deg, rgba(227, 27, 35, 0.9), rgba(93, 18, 90, 0.72)),
+        linear-gradient(135deg, rgba(38, 75, 63, 0.94), rgba(102, 72, 63, 0.74)),
         url("assets/pharmacist-team.jpg");
       background-size: cover;
       background-position: center;
@@ -563,8 +573,9 @@
     }
 
     .skincare-feature p {
-      color: #fff6f6;
+      color: #f5eee5;
       max-width: 420px;
+      margin-bottom: 18px;
     }
 
     .category-grid {
@@ -574,15 +585,40 @@
     }
 
     .category {
-      min-height: 96px;
+      min-height: 66px;
       display: flex;
       align-items: center;
+      justify-content: center;
       padding: 18px;
       border-radius: var(--radius);
       border: 1px solid var(--line);
       background: var(--white);
       color: var(--green-900);
       font-weight: 800;
+      text-align: center;
+    }
+
+    .category:hover {
+      border-color: rgba(15, 125, 77, 0.36);
+      background: #eef5f0;
+    }
+
+    .category-intro {
+      margin-bottom: 18px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--white);
+    }
+
+    .category-intro h3 {
+      color: var(--green-900);
+      margin-bottom: 8px;
+      font-size: 1.35rem;
+    }
+
+    .category-intro p {
+      color: var(--muted);
     }
 
     .locator {
@@ -1062,40 +1098,51 @@
     <section class="services" id="skincare">
       <div class="container">
         <div class="section-head center">
-          <span class="section-kicker">Pharmacy and skincare</span>
-          <h2>Healthcare support with a dedicated skincare and beauty collection.</h2>
+          <span class="section-kicker">BV SKINCARE preview</span>
+          <h2>A dedicated skincare storefront for collections, concerns, and routines.</h2>
           <p>
-            The pharmacy brands support everyday medicines and wellness needs, while BV SKINCARE gives
-            customers a focused destination for beauty, body care, and dermatology products.
+            BV SKINCARE now has its own page for beauty retail browsing, product-style groups, skin concern navigation,
+            simple regimen guidance, and direct store support.
           </p>
         </div>
 
-        <div class="service-grid" aria-label="Core service areas">
-          <div class="service-item"><strong>Prescription Medicines</strong><span>Reliable pharmaceutical care and responsible medicine support.</span></div>
-          <div class="service-item"><strong>Wellness Products</strong><span>Vitamins, supplements, family care, and everyday health essentials.</span></div>
-          <div class="service-item"><strong>Professional Guidance</strong><span>Customer-centered support from trained pharmacy personnel.</span></div>
-          <div class="service-item"><strong>Community Care</strong><span>Humanitarian outreach and support for underserved populations.</span></div>
+        <div class="service-grid" aria-label="BV SKINCARE page highlights">
+          <div class="service-item"><small>Collections</small><strong>Shop by Category</strong><span>Bath and body, face care, sunscreen, baby care, Asian beauty, and dermatology care.</span></div>
+          <div class="service-item"><small>Products</small><strong>Product Groups</strong><span>Cleanser, sunscreen, moisturizer, acne care, serums, and treatment-focused shelf sections.</span></div>
+          <div class="service-item"><small>Concerns</small><strong>Skin Concern Paths</strong><span>Browse around acne, dark spots, dryness, oil control, texture, sensitivity, and anti-aging goals.</span></div>
+          <div class="service-item"><small>Support</small><strong>Routine Guidance</strong><span>Simple cleanse, treat, moisturize, and protect guidance backed by the Bountyvine store team.</span></div>
         </div>
 
         <div class="skincare-panel">
           <div class="skincare-feature">
             <img src="assets/bv-skincare-logo.svg" alt="BV SKINCARE logo" />
             <div>
-              <h3>BV SKINCARE</h3>
-              <p>Curated skincare and beauty essentials for customers seeking clearer, healthier, and better-protected skin.</p>
+              <h3>Explore BV SKINCARE</h3>
+              <p>Open the dedicated skincare page for a calmer beauty-store experience with collections, product groups, concerns, regimen steps, and visit details.</p>
+              <div class="card-actions">
+                <a class="btn btn-light" href="bv-skincare.html">Open BV SKINCARE</a>
+                <a class="btn btn-primary" href="https://wa.me/2349167202831" target="_blank" rel="noopener">Ask on WhatsApp</a>
+              </div>
             </div>
           </div>
 
-          <div class="category-grid" aria-label="Skincare and beauty categories">
-            <div class="category">Bath &amp; Body</div>
-            <div class="category">Face Care</div>
-            <div class="category">Sunscreens</div>
-            <div class="category">Baby Care</div>
-            <div class="category">Asian Beauty</div>
-            <div class="category">Acne &amp; Treatment Care</div>
-            <div class="category">Anti-Aging</div>
-            <div class="category">Serums &amp; Moisturizers</div>
-            <div class="category">Dermatology Care</div>
+          <div>
+            <div class="category-intro">
+              <span class="section-kicker">Quick paths</span>
+              <h3>Jump into the skincare page by need.</h3>
+              <p>These links take customers straight into the new BV SKINCARE storefront experience.</p>
+            </div>
+            <div class="category-grid" aria-label="BV SKINCARE page shortcuts">
+              <a class="category" href="bv-skincare.html#bath-body">Bath &amp; Body</a>
+              <a class="category" href="bv-skincare.html#face-care">Face Care</a>
+              <a class="category" href="bv-skincare.html#sunscreens">Sunscreens</a>
+              <a class="category" href="bv-skincare.html#baby-care">Baby Care</a>
+              <a class="category" href="bv-skincare.html#asian-beauty">Asian Beauty</a>
+              <a class="category" href="bv-skincare.html#acne-care">Acne Care</a>
+              <a class="category" href="bv-skincare.html#anti-aging">Anti-Aging</a>
+              <a class="category" href="bv-skincare.html#derm-care">Dermatology Care</a>
+              <a class="category" href="bv-skincare.html#visit">Visit or Chat</a>
+            </div>
           </div>
         </div>
       </div>
