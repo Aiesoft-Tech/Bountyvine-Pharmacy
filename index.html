@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prodograce Pharmacy Plus Ltd | BountyVine Pharmacy</title>
+  <meta name="description" content="Prodograce Pharmacy Plus Ltd is a Nigerian pharmaceutical store company and parent brand of BountyVine Pharmacy. Find your nearest pharmacy store using your location." />
+
+  <style>
+    :root {
+      --purple: #8b1a86;
+      --purple-dark: #5d125a;
+      --purple-deeper: #3f0c3d;
+      --purple-soft: #f8e8f6;
+      --green: #8bd018;
+      --green-dark: #5f9418;
+      --green-deeper: #2f5f0f;
+      --green-soft: #f3fbe5;
+      --gold-soft: #fff6d8;
+      --cream: #fffdf8;
+      --white: #ffffff;
+      --ink: #211321;
+      --muted: #6f6471;
+      --line: rgba(139, 26, 134, 0.16);
+      --shadow: 0 22px 55px rgba(93, 18, 90, 0.15);
+      --radius: 26px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: linear-gradient(90deg, var(--purple-dark), var(--purple), var(--green-dark));
+      color: var(--white);
+      padding: 9px 0;
+      font-size: 0.92rem;
+    }
+
+    .topbar .container {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(255, 253, 248, 0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 900;
+      color: var(--purple-dark);
+    }
+
+    .brand-logo {
+      width: 66px;
+      height: 52px;
+      object-fit: contain;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 6px;
+      box-shadow: 0 8px 22px rgba(139, 26, 134, 0.1);
+    }
+
+    .brand small {
+      display: block;
+      color: var(--green-dark);
+      font-size: 0.76rem;
+      font-weight: 800;
+    }
+
+    .navlinks {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-weight: 800;
+      color: #4b3b4d;
+    }
+
+    .navlinks a:hover {
+      color: var(--purple);
+    }
+
+    .menu {
+      display: none;
+      border: 0;
+      border-radius: 14px;
+      padding: 11px 15px;
+      background: var(--purple-soft);
+      color: var(--purple-dark);
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 22px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(93, 18, 90, 0.18);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+      color: var(--white);
+    }
+
+    .btn-green {
+      background: linear-gradient(135deg, var(--green), #b7ea36);
+      color: #241324;
+    }
+
+    .btn-light {
+      background: var(--white);
+      color: var(--purple-dark);
+      border: 1px solid var(--line);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 92px 0 74px;
+      background:
+        radial-gradient(circle at top left, rgba(139, 26, 134, 0.16), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(139, 208, 24, 0.28), transparent 34%),
+        linear-gradient(135deg, #ffffff 0%, #fff4fd 48%, #f4fbe3 100%);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 430px;
+      height: 430px;
+      border: 44px solid rgba(139, 208, 24, 0.18);
+      border-radius: 50%;
+      right: -120px;
+      top: 40px;
+    }
+
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.22fr 0.78fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      color: var(--purple-dark);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 9px 15px;
+      font-weight: 900;
+      margin-bottom: 18px;
+      box-shadow: 0 12px 26px rgba(139, 26, 134, 0.09);
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4.8rem);
+      line-height: 1.03;
+      letter-spacing: -0.055em;
+      color: var(--purple-dark);
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.12rem;
+      max-width: 690px;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .trust-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      max-width: 680px;
+    }
+
+    .trust-card {
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 16px;
+      box-shadow: 0 10px 28px rgba(93, 18, 90, 0.06);
+    }
+
+    .trust-card strong {
+      display: block;
+      color: var(--green-dark);
+      font-size: 1.45rem;
+    }
+
+    .hero-card {
+      width: min(100%, 430px);
+      justify-self: end;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid var(--line);
+      border-radius: 36px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card-inner {
+      min-height: 548px;
+      border-radius: 30px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 28px;
+      color: var(--white);
+      background:
+        linear-gradient(135deg, rgba(93, 18, 90, 0.96), rgba(139, 26, 134, 0.72), rgba(95, 148, 24, 0.86)),
+        url('assets/pharmacy-hero.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .logo-showcase {
+      flex: 0 0 auto;
+      margin-bottom: 0;
+      background: rgba(255, 255, 255, 0.98);
+      color: var(--purple-dark);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      border-radius: 24px;
+      padding: 12px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      align-items: stretch;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.14);
+    }
+
+    .logo-item {
+      min-height: 128px;
+      background: #ffffff;
+      border: 1px solid rgba(139, 26, 134, 0.12);
+      border-radius: 18px;
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .logo-item img {
+      width: 100%;
+      height: 96px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .logo-item span {
+      display: block;
+      font-size: 0.76rem;
+      line-height: 1.15;
+      font-weight: 900;
+      color: var(--purple-dark);
+    }
+
+    .hero-card-copy {
+      flex: 0 0 auto;
+      margin-top: 0;
+      background: rgba(63, 12, 61, 0.68);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 24px;
+      padding: 18px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.18);
+    }
+
+    .hero-card-inner h2 {
+      font-size: 1.62rem;
+      line-height: 1.14;
+      margin-bottom: 8px;
+      color: #ffffff;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.32);
+    }
+
+    .hero-card-inner p {
+      color: #fff7fd;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+      font-weight: 700;
+      font-size: 0.93rem;
+      margin-bottom: 0;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .pill {
+      background: rgba(255, 255, 255, 0.96);
+      color: var(--purple-dark);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 0.86rem;
+      line-height: 1.15;
+      font-weight: 900;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+    }
+
+    .hero-card-copy .pill:nth-child(1) {
+      background: #ffffff;
+      color: var(--purple);
+      border-color: rgba(139, 26, 134, 0.28);
+    }
+
+    .hero-card-copy .pill:nth-child(2) {
+      background: var(--green-soft);
+      color: var(--green-dark);
+      border-color: rgba(139, 208, 24, 0.42);
+    }
+
+    .hero-card-copy .pill:nth-child(3) {
+      background: var(--gold-soft);
+      color: #9a5b00;
+      border-color: rgba(245, 158, 11, 0.36);
+    }
+
+    section {
+      padding: 82px 0;
+    }
+
+    .section-heading {
+      max-width: 790px;
+      margin: 0 auto 42px;
+      text-align: center;
+    }
+
+    .section-heading span {
+      color: var(--purple);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.82rem;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(2rem, 4vw, 3.15rem);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+      margin: 10px 0 14px;
+      color: var(--purple-dark);
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: 0 14px 34px rgba(93, 18, 90, 0.07);
+    }
+
+    .icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--purple-soft), var(--green-soft));
+      font-size: 1.45rem;
+      margin-bottom: 16px;
+    }
+
+    .card h3 {
+      color: var(--purple-dark);
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+    }
+
+    .palette {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .swatch {
+      border-radius: 20px;
+      padding: 20px;
+      color: var(--white);
+      min-height: 110px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      font-weight: 900;
+    }
+
+    .swatch small {
+      opacity: 0.86;
+      font-weight: 800;
+    }
+
+    .swatch.purple {
+      background: var(--purple);
+    }
+
+    .swatch.purple-dark {
+      background: var(--purple-dark);
+    }
+
+    .swatch.green {
+      background: var(--green);
+      color: #241324;
+    }
+
+    .swatch.green-dark {
+      background: var(--green-dark);
+    }
+
+    .store-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .store-card {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .store-card.main-store {
+      border: 2px solid rgba(139, 26, 134, 0.24);
+      background: linear-gradient(180deg, #fff4fd 0%, #ffffff 42%);
+    }
+
+    .store-card.division-store {
+      border: 2px solid rgba(139, 208, 24, 0.34);
+      background: linear-gradient(180deg, #f4fbe3 0%, #ffffff 42%);
+    }
+
+    .store-banner {
+      min-height: 190px;
+      padding: 26px;
+      color: var(--white);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .store-banner.main {
+      color: #ffffff;
+      background:
+        radial-gradient(circle at top right, rgba(255, 255, 255, 0.26), transparent 32%),
+        linear-gradient(135deg, var(--purple) 0%, var(--purple-deeper) 100%);
+    }
+
+    .store-banner.main h3,
+    .store-banner.main p {
+      color: #ffffff;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
+    }
+
+    .store-banner.main p {
+      color: #f8e8f6;
+      font-weight: 800;
+    }
+
+    .store-banner.division {
+      color: #ffffff;
+      background:
+        radial-gradient(circle at top right, rgba(255, 255, 255, 0.26), transparent 34%),
+        linear-gradient(135deg, var(--green-dark) 0%, var(--green-deeper) 100%);
+    }
+
+    .store-banner.division h3,
+    .store-banner.division p {
+      color: #ffffff;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
+    }
+
+    .store-banner.division p {
+      color: #f4fbe3;
+      font-weight: 800;
+    }
+
+    .store-logo {
+      width: 150px;
+      height: 104px;
+      object-fit: contain;
+      background: var(--white);
+      border-radius: 22px;
+      padding: 10px;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .store-content {
+      padding: 26px;
+    }
+
+    .main-store .store-content strong {
+      color: var(--purple-dark);
+    }
+
+    .division-store .store-content strong {
+      color: var(--green-dark);
+    }
+
+    .main-store .btn-primary {
+      background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+    }
+
+    .division-store .btn-primary {
+      background: linear-gradient(135deg, var(--green-dark), var(--green));
+      color: #241324;
+    }
+
+    .store-content ul {
+      list-style: none;
+      margin: 18px 0 24px;
+    }
+
+    .store-content li {
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(139, 26, 134, 0.1);
+      color: #5f5561;
+    }
+
+    .locator {
+      background:
+        radial-gradient(circle at top right, rgba(139, 208, 24, 0.28), transparent 32%),
+        radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.1), transparent 34%),
+        linear-gradient(135deg, var(--purple-dark), var(--purple));
+      color: var(--white);
+    }
+
+    .locator .section-heading h2 {
+      color: var(--white);
+    }
+
+    .locator .section-heading span,
+    .locator .section-heading p {
+      color: #f6e8f5;
+    }
+
+    .locator-panel {
+      display: grid;
+      grid-template-columns: 0.96fr 1.04fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .locator-box,
+    .result-box {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 30px;
+      padding: 28px;
+      backdrop-filter: blur(10px);
+    }
+
+    .locator-box label {
+      display: block;
+      margin: 18px 0 8px;
+      font-weight: 900;
+    }
+
+    .locator-box select,
+    .locator-box input {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      background: rgba(255, 255, 255, 0.96);
+      color: var(--ink);
+      font-size: 1rem;
+    }
+
+    .locator-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+
+    .notice {
+      margin-top: 16px;
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(139, 208, 24, 0.18);
+      border: 1px solid rgba(139, 208, 24, 0.4);
+      color: #fffdf8;
+      font-size: 0.95rem;
+    }
+
+    .result-card {
+      background: var(--white);
+      color: var(--ink);
+      border: 1px solid rgba(139, 208, 24, 0.25);
+      border-radius: 23px;
+      padding: 22px;
+      margin-top: 16px;
+    }
+
+    .result-card h3 {
+      color: var(--purple-dark);
+    }
+
+    .distance {
+      display: inline-flex;
+      background: var(--green-soft);
+      color: var(--green-dark);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 900;
+      margin: 12px 0;
+    }
+
+    .manual-result {
+      color: #f6e8f5;
+      margin-top: 16px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .about-image {
+      border-radius: 32px;
+      min-height: 440px;
+      background:
+        linear-gradient(135deg, rgba(139, 26, 134, 0.14), rgba(139, 208, 24, 0.14)),
+        url('assets/pharmacist-team.jpg');
+      background-size: cover;
+      background-position: center;
+      box-shadow: var(--shadow);
+    }
+
+    .check-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      list-style: none;
+      margin-top: 24px;
+    }
+
+    .check-list li {
+      background: linear-gradient(135deg, var(--purple-soft), var(--green-soft));
+      color: var(--purple-dark);
+      border-radius: 17px;
+      padding: 13px 14px;
+      font-weight: 900;
+    }
+
+    .contact {
+      background: var(--white);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .contact-card {
+      padding: 0;
+      overflow: hidden;
+      border-radius: 26px;
+    }
+
+    .contact-head {
+      padding: 22px 24px;
+      color: #ffffff;
+    }
+
+    .contact-head h3 {
+      color: #ffffff;
+      margin: 0 0 8px;
+      font-size: 1.3rem;
+      line-height: 1.2;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    }
+
+    .contact-tag {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+    }
+
+    .contact-body {
+      padding: 24px;
+    }
+
+    .contact-body p {
+      margin-top: 10px;
+      color: #5f5561;
+    }
+
+    .contact-body strong {
+      font-weight: 900;
+    }
+
+    .main-contact {
+      border: 2px solid rgba(139, 26, 134, 0.22);
+      background: linear-gradient(180deg, #fff4fd 0%, #ffffff 40%);
+    }
+
+    .main-contact .contact-head {
+      background:
+        radial-gradient(circle at top right, rgba(255, 255, 255, 0.22), transparent 34%),
+        linear-gradient(135deg, var(--purple) 0%, var(--purple-deeper) 100%);
+    }
+
+    .main-contact .contact-body strong {
+      color: var(--purple-dark);
+    }
+
+    .main-contact .btn-primary {
+      background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+      color: #ffffff;
+    }
+
+    .division-contact {
+      border: 2px solid rgba(139, 208, 24, 0.28);
+      background: linear-gradient(180deg, #f4fbe3 0%, #ffffff 40%);
+    }
+
+    .division-contact .contact-head {
+      background:
+        radial-gradient(circle at top right, rgba(255, 255, 255, 0.24), transparent 34%),
+        linear-gradient(135deg, var(--green-dark) 0%, var(--green-deeper) 100%);
+    }
+
+    .division-contact .contact-body strong {
+      color: var(--green-dark);
+    }
+
+    .division-contact .btn-primary {
+      background: linear-gradient(135deg, var(--green-dark), var(--green));
+      color: #241324;
+    }
+
+    footer {
+      background: linear-gradient(135deg, var(--purple-dark), #391038);
+      color: #f6e8f5;
+      padding: 38px 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 0.8fr;
+      gap: 24px;
+    }
+
+    footer h3,
+    footer h4 {
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    footer a {
+      display: block;
+      color: #f6e8f5;
+      margin: 8px 0;
+    }
+
+    .copyright {
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      margin-top: 28px;
+      padding-top: 18px;
+      color: #dfeec5;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .locator-panel,
+      .about-grid,
+      .contact-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        width: 100%;
+        justify-self: stretch;
+      }
+
+      .cards,
+      .store-grid,
+      .palette {
+        grid-template-columns: 1fr;
+      }
+
+      .trust-row {
+        grid-template-columns: 1fr;
+      }
+
+      .navlinks {
+        position: fixed;
+        top: 122px;
+        left: 16px;
+        right: 16px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 18px;
+        box-shadow: var(--shadow);
+      }
+
+      .navlinks.open {
+        display: flex;
+      }
+
+      .menu {
+        display: inline-flex;
+      }
+
+      .hero {
+        padding-top: 56px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero-card-inner {
+        min-height: auto;
+        gap: 20px;
+        padding: 22px;
+      }
+
+      .logo-showcase {
+        grid-template-columns: 1fr;
+      }
+
+      .logo-item {
+        text-align: center;
+        min-height: 118px;
+      }
+
+      .logo-item img {
+        width: 100%;
+        height: 88px;
+      }
+
+      .hero-card-inner h2 {
+        font-size: 1.5rem;
+      }
+
+      .store-banner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .store-logo {
+        width: 100%;
+        height: 98px;
+      }
+
+      .brand span {
+        font-size: 0.9rem;
+      }
+
+      .brand-logo {
+        width: 56px;
+      }
+
+      .check-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="container">
+      <span>Prodograce Pharmacy Plus Ltd — Parent Company</span>
+      <span>Call: +234 000 000 0000 | WhatsApp: +234 000 000 0000</span>
+    </div>
+  </div>
+
+  <header>
+    <nav class="container nav" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Prodograce Pharmacy Plus Ltd home">
+        <img class="brand-logo" src="assets/prodograce-logo.png" alt="Prodograce Pharmacy Plus Ltd logo" />
+        <span>
+          Prodograce Pharmacy Plus Ltd
+          <small>Parent company of BountyVine Pharmacy</small>
+        </span>
+      </a>
+
+      <button class="menu" id="menuButton" aria-label="Toggle menu">Menu</button>
+
+      <div class="navlinks" id="navLinks">
+        <a href="#stores">Our Stores</a>
+        <a href="#services">Services</a>
+        <a href="#locator">Find Nearest Store</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="btn btn-primary">Contact Us</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="badge">🍇 Where quality meets care</div>
+          <h1>Trusted pharmacy care with purple confidence and green wellness.</h1>
+          <p>
+            Prodograce Pharmacy Plus Ltd is the parent pharmaceutical company, with BountyVine Pharmacy operating as a division store brand. The website follows the logo accents: purple for trust and premium care, green for wellness, freshness, and quality.
+          </p>
+          <div class="hero-actions">
+            <a href="#locator" class="btn btn-primary">Find Nearest Store</a>
+            <a href="#stores" class="btn btn-light">View Our Stores</a>
+          </div>
+          <div class="trust-row">
+            <div class="trust-card"><strong>2</strong>Store brands</div>
+            <div class="trust-card"><strong>Rx</strong>Prescription support</div>
+            <div class="trust-card"><strong>NG</strong>Nigerian pharmacy focus</div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="hero-card-inner">
+            <div class="logo-showcase">
+              <div class="logo-item">
+                <img src="assets/prodograce-logo.png" alt="Prodograce Pharmacy Plus Ltd logo" />
+                <span>Prodograce Pharmacy Plus Ltd</span>
+              </div>
+              <div class="logo-item">
+                <img src="assets/BountyVine.jpeg" alt="BountyVine Pharmacy logo" />
+                <span>BountyVine Pharmacy</span>
+              </div>
+            </div>
+
+            <div class="hero-card-copy">
+              <h2>Reliable medicines, wellness products, and professional support.</h2>
+              <p>
+                Visit Prodograce Pharmacy Plus Ltd or BountyVine Pharmacy for quality medicines, health essentials, and customer-first pharmacy service.
+              </p>
+              <div class="pill-row">
+                <span class="pill">Prodograce Pharmacy</span>
+                <span class="pill">BountyVine Pharmacy</span>
+                <span class="pill">Quality meets care</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="brand">
+      <div class="container">
+        <div class="section-heading">
+          <span>Brand direction</span>
+          <h2>Clean pharmacy design using the uploaded logo colour accents.</h2>
+          <p>
+            The purple and green accents are used across the buttons, headers, cards, gradients, icon blocks, and store banners to make the website feel consistent with the company identity.
+          </p>
+        </div>
+        <div class="palette" aria-label="Brand colour palette">
+          <div class="swatch purple">Purple <small>#8B1A86</small></div>
+          <div class="swatch purple-dark">Dark Purple <small>#5D125A</small></div>
+          <div class="swatch green">Wellness Green <small>#8BD018</small></div>
+          <div class="swatch green-dark">Deep Green <small>#5F9418</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="stores">
+      <div class="container">
+        <div class="section-heading">
+          <span>Our store brands</span>
+          <h2>One parent company, two customer-facing pharmacy stores.</h2>
+          <p>
+            BountyVine Pharmacy is presented as a division under Prodograce Pharmacy Plus Ltd while still keeping its own brand identity.
+          </p>
+        </div>
+
+        <div class="store-grid">
+          <article class="card store-card main-store">
+            <div class="store-banner main">
+              <div>
+                <h3>Prodograce Pharmacy Plus Ltd</h3>
+                <p>Main company store</p>
+              </div>
+              <img class="store-logo" src="assets/prodograce-logo.png" alt="Prodograce Pharmacy Plus Ltd logo" />
+            </div>
+            <div class="store-content">
+              <p>The flagship store brand providing trusted pharmacy services, medicines, personal care products, and wellness support.</p>
+              <ul>
+                <li><strong>Address:</strong> Replace with full Prodograce store address</li>
+                <li><strong>Phone:</strong> +234 000 000 0000</li>
+                <li><strong>Opening hours:</strong> Monday - Saturday, 8:00 AM - 8:00 PM</li>
+              </ul>
+              <a href="#locator" class="btn btn-primary">Check Distance</a>
+            </div>
+          </article>
+
+          <article class="card store-card division-store">
+            <div class="store-banner division">
+              <div>
+                <h3>BountyVine Pharmacy</h3>
+                <p>Division of Prodograce Pharmacy Plus Ltd</p>
+              </div>
+              <img class="store-logo" src="assets/BountyVine.jpeg" alt="BountyVine Pharmacy logo" />
+            </div>
+            <div class="store-content">
+              <p>BountyVine Pharmacy extends the Prodograce promise with its own friendly customer-facing brand: where quality meets care.</p>
+              <ul>
+                <li><strong>Address:</strong> Replace with full BountyVine store address</li>
+                <li><strong>Phone:</strong> +234 000 000 0000</li>
+                <li><strong>Opening hours:</strong> Monday - Saturday, 8:00 AM - 8:00 PM</li>
+              </ul>
+              <a href="#locator" class="btn btn-primary">Check Distance</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-heading">
+          <span>What we offer</span>
+          <h2>Everyday pharmacy services for individuals and families.</h2>
+          <p>These service blocks can be adjusted once the full confirmed list of services is available.</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <div class="icon">💊</div>
+            <h3>Prescription Medicines</h3>
+            <p>Access prescribed medicines with responsible guidance from trained pharmacy personnel.</p>
+          </article>
+          <article class="card">
+            <div class="icon">🩺</div>
+            <h3>Health & Wellness Support</h3>
+            <p>Get basic health product advice, wellness essentials, vitamins, and personal care items.</p>
+          </article>
+          <article class="card">
+            <div class="icon">👨‍👩‍👧</div>
+            <h3>Family Care Products</h3>
+            <p>Shop everyday healthcare, mother-and-child care, hygiene, first-aid, and personal care products.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="locator" id="locator">
+      <div class="container">
+        <div class="section-heading">
+          <span>Nearest store locator</span>
+          <h2>Use your current location to find the closest pharmacy store.</h2>
+          <p>
+            Visitors can allow location access in their browser. The website calculates the nearest store from the configured coordinates.
+          </p>
+        </div>
+
+        <div class="locator-panel">
+          <div class="locator-box">
+            <h3>Find nearest store automatically</h3>
+            <p>Click the button below and allow location access when your browser asks.</p>
+            <div class="locator-actions">
+              <button class="btn btn-green" id="findNearestBtn">Use My Location</button>
+              <button class="btn btn-light" id="resetLocatorBtn">Reset</button>
+            </div>
+            <div class="notice">
+              Replace the sample latitude and longitude values in the JavaScript store list with the real coordinates of both stores.
+            </div>
+            <label for="manualStore">Or select a store manually</label>
+            <select id="manualStore"><option value="">Choose a store</option></select>
+            <div class="manual-result" id="manualResult"></div>
+          </div>
+
+          <div class="result-box">
+            <h3>Nearest store result</h3>
+            <p id="locatorStatus">No location checked yet.</p>
+            <div id="nearestResult"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about-grid">
+        <div class="about-image" role="img" aria-label="Pharmacy team serving customers"></div>
+        <div>
+          <div class="section-heading" style="text-align:left; margin:0 0 22px;">
+            <span>About Prodograce</span>
+            <h2>Built around trust, access, and professional care.</h2>
+            <p>
+              Prodograce Pharmacy Plus Ltd operates as the parent company for its pharmacy store network, including BountyVine Pharmacy. The company is positioned to support communities with accessible medicines, quality products, and friendly customer service.
+            </p>
+          </div>
+          <ul class="check-list">
+            <li>✓ Trusted medicines</li>
+            <li>✓ Two store brands</li>
+            <li>✓ Customer-focused care</li>
+            <li>✓ Nigerian pharmacy service</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <span>Contact</span>
+          <h2>Reach any of our pharmacy stores.</h2>
+          <p>Update these details with the real phone numbers, email address, WhatsApp number, and store addresses.</p>
+        </div>
+
+        <div class="contact-grid">
+          <article class="card contact-card main-contact">
+            <div class="contact-head">
+              <h3>Prodograce Pharmacy Plus Ltd</h3>
+              <span class="contact-tag">Main company store</span>
+            </div>
+            <div class="contact-body">
+              <p><strong>Address:</strong> Replace with full Prodograce store address</p>
+              <p><strong>Phone:</strong> +234 000 000 0000</p>
+              <p><strong>Email:</strong> info@prodogracepharmacy.com</p>
+              <p style="margin-top:18px;">
+                <a class="btn btn-primary" href="https://wa.me/2340000000000" target="_blank" rel="noopener">Chat on WhatsApp</a>
+              </p>
+            </div>
+          </article>
+
+          <article class="card contact-card division-contact">
+            <div class="contact-head">
+              <h3>BountyVine Pharmacy</h3>
+              <span class="contact-tag">Division of Prodograce Pharmacy Plus Ltd</span>
+            </div>
+            <div class="contact-body">
+              <p><strong>Address:</strong> Replace with full BountyVine store address</p>
+              <p><strong>Phone:</strong> +234 000 000 0000</p>
+              <p><strong>Email:</strong> bountyvine@prodogracepharmacy.com</p>
+              <p style="margin-top:18px;">
+                <a class="btn btn-primary" href="https://wa.me/2340000000000" target="_blank" rel="noopener">Chat on WhatsApp</a>
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <h3>Prodograce Pharmacy Plus Ltd</h3>
+        <p>Parent company of BountyVine Pharmacy. Providing trusted pharmacy services and health products in Nigeria.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="#stores">Our Stores</a>
+        <a href="#services">Services</a>
+        <a href="#locator">Find Nearest Store</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div>
+        <h4>Store Brands</h4>
+        <a href="#stores">Prodograce Pharmacy Plus Ltd</a>
+        <a href="#stores">BountyVine Pharmacy</a>
+      </div>
+    </div>
+    <div class="container copyright">
+      © <span id="year"></span> Prodograce Pharmacy Plus Ltd. All rights reserved. BountyVine Pharmacy is a division of Prodograce Pharmacy Plus Ltd.
+    </div>
+  </footer>
+
+  <script>
+    const navLinks = document.getElementById('navLinks');
+    const menuButton = document.getElementById('menuButton');
+    const findNearestBtn = document.getElementById('findNearestBtn');
+    const resetLocatorBtn = document.getElementById('resetLocatorBtn');
+    const locatorStatus = document.getElementById('locatorStatus');
+    const nearestResult = document.getElementById('nearestResult');
+    const manualStore = document.getElementById('manualStore');
+    const manualResult = document.getElementById('manualResult');
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    menuButton.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    document.querySelectorAll('.navlinks a').forEach((link) => {
+      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    // Replace these sample coordinates with the real store coordinates.
+    // In Google Maps: right-click the exact store pin and copy latitude/longitude.
+    const stores = [
+      {
+        id: 'prodograce',
+        name: 'Prodograce Pharmacy Plus Ltd',
+        type: 'Main company store',
+        address: 'Replace with full Prodograce store address, Nigeria',
+        phone: '+234 000 000 0000',
+        whatsapp: '2340000000000',
+        latitude: 4.8156,
+        longitude: 7.0498,
+        mapUrl: 'https://www.google.com/maps/search/?api=1&query=Prodograce%20Pharmacy%20Plus%20Ltd'
+      },
+      {
+        id: 'bountyvine',
+        name: 'BountyVine Pharmacy',
+        type: 'Division of Prodograce Pharmacy Plus Ltd',
+        address: 'Replace with full BountyVine store address, Nigeria',
+        phone: '+234 000 000 0000',
+        whatsapp: '2340000000000',
+        latitude: 4.8499,
+        longitude: 7.0523,
+        mapUrl: 'https://www.google.com/maps/search/?api=1&query=BountyVine%20Pharmacy'
+      }
+    ];
+
+    stores.forEach((store) => {
+      const option = document.createElement('option');
+      option.value = store.id;
+      option.textContent = store.name;
+      manualStore.appendChild(option);
+    });
+
+    function toRadians(value) {
+      return value * Math.PI / 180;
+    }
+
+    function calculateDistanceKm(lat1, lon1, lat2, lon2) {
+      const earthRadiusKm = 6371;
+      const dLat = toRadians(lat2 - lat1);
+      const dLon = toRadians(lon2 - lon1);
+      const a = Math.sin(dLat / 2) ** 2 +
+        Math.cos(toRadians(lat1)) *
+        Math.cos(toRadians(lat2)) *
+        Math.sin(dLon / 2) ** 2;
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      return earthRadiusKm * c;
+    }
+
+    function renderStoreCard(store, distanceKm = null) {
+      const distanceText = distanceKm !== null
+        ? `<span class="distance">Approximately ${distanceKm.toFixed(2)} km away</span>`
+        : '';
+
+      return `
+        <div class="result-card">
+          <h3>${store.name}</h3>
+          <p><strong>${store.type}</strong></p>
+          ${distanceText}
+          <p><strong>Address:</strong> ${store.address}</p>
+          <p><strong>Phone:</strong> ${store.phone}</p>
+          <div class="locator-actions">
+            <a class="btn btn-primary" href="${store.mapUrl}" target="_blank" rel="noopener">Open in Google Maps</a>
+            <a class="btn btn-light" href="https://wa.me/${store.whatsapp}" target="_blank" rel="noopener">WhatsApp Store</a>
+          </div>
+        </div>
+      `;
+    }
+
+    function findNearestStore(userLat, userLon) {
+      return stores
+        .map((store) => ({
+          ...store,
+          distanceKm: calculateDistanceKm(userLat, userLon, store.latitude, store.longitude)
+        }))
+        .sort((a, b) => a.distanceKm - b.distanceKm)[0];
+    }
+
+    findNearestBtn.addEventListener('click', () => {
+      if (!navigator.geolocation) {
+        locatorStatus.textContent = 'Your browser does not support location services. Please select a store manually.';
+        return;
+      }
+
+      locatorStatus.textContent = 'Checking your location...';
+      nearestResult.innerHTML = '';
+
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const nearestStore = findNearestStore(position.coords.latitude, position.coords.longitude);
+          locatorStatus.textContent = 'Nearest store found based on your current location.';
+          nearestResult.innerHTML = renderStoreCard(nearestStore, nearestStore.distanceKm);
+        },
+        (error) => {
+          locatorStatus.textContent = error.code === error.PERMISSION_DENIED
+            ? 'Location permission was denied. Enable location access in your browser settings or select a store manually.'
+            : 'Unable to access your location. Please select a store manually.';
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 10000,
+          maximumAge: 60000
+        }
+      );
+    });
+
+    resetLocatorBtn.addEventListener('click', () => {
+      locatorStatus.textContent = 'No location checked yet.';
+      nearestResult.innerHTML = '';
+      manualResult.innerHTML = '';
+      manualStore.value = '';
+    });
+
+    manualStore.addEventListener('change', (event) => {
+      const selected = stores.find((store) => store.id === event.target.value);
+      manualResult.innerHTML = selected ? renderStoreCard(selected) : '';
+    });
+  </script>
+</body>
+</html>
