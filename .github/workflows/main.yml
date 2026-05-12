@@ -1,0 +1,92 @@
+name: Deploy static website
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/deploy-static-website.yml"
+      - "dist/**"
+      - "public/**"
+      - "src/**"
+      - "package.json"
+      - "package-lock.json"
+      - "*.html"
+      - "assets/**"
+  workflow_dispatch:
+    inputs:
+      source_dir:
+        description: "Directory containing the static website files to upload"
+        required: false
+        default: "dist"
+
+permissions:
+  contents: read
+  id-token: write
+
+env:
+  AWS_REGION: ${{ vars.AWS_REGION || 'us-east-1' }}
+  S3_BUCKET: ${{ vars.S3_BUCKET }}
+  WEBSITE_SOURCE_DIR: ${{ inputs.source_dir || vars.WEBSITE_SOURCE_DIR || 'dist' }}
+
+jobs:
+  deploy:
+    name: Deploy to S3
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate deployment settings
+        run: |
+          if [ -z "$S3_BUCKET" ]; then
+            echo "Set the GitHub repository variable S3_BUCKET to your Terraform bucket name."
+            exit 1
+          fi
+
+      - name: Setup Node.js
+        if: ${{ hashFiles('package.json') != '' }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        if: ${{ hashFiles('package.json') != '' }}
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
+
+      - name: Build website
+        if: ${{ hashFiles('package.json') != '' }}
+        run: npm run build
+
+      - name: Configure AWS credentials with OIDC
+        if: ${{ vars.AWS_ROLE_TO_ASSUME != '' }}
+        uses: aws-actions/configure-aws-credentials@v6
+        with:
+          aws-region: ${{ env.AWS_REGION }}
+          role-to-assume: ${{ vars.AWS_ROLE_TO_ASSUME }}
+
+      - name: Configure AWS credentials with access keys
+        if: ${{ vars.AWS_ROLE_TO_ASSUME == '' }}
+        uses: aws-actions/configure-aws-credentials@v6
+        with:
+          aws-region: ${{ env.AWS_REGION }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: Verify website source directory
+        run: |
+          if [ ! -d "$WEBSITE_SOURCE_DIR" ]; then
+            echo "Website source directory '$WEBSITE_SOURCE_DIR' does not exist."
+            echo "Create it, set the WEBSITE_SOURCE_DIR repository variable, or pass source_dir when manually running the workflow."
+            exit 1
+          fi
+
+      - name: Upload files to S3
+        run: aws s3 sync "$WEBSITE_SOURCE_DIR" "s3://$S3_BUCKET" --delete
