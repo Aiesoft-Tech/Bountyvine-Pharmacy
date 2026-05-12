@@ -8,19 +8,19 @@
 
   <style>
     :root {
-      --red-700: #b90f17;
-      --red-600: #e31b23;
-      --red-100: #ffe9ea;
-      --green-900: #063f2a;
-      --green-700: #0f7d4d;
-      --cream: #fffaf1;
-      --rose: #fff4f4;
-      --white: #ffffff;
-      --ink: #171615;
-      --muted: #6d6663;
-      --line: #ead8d8;
-      --gold: #d6a82f;
-      --shadow: 0 18px 44px rgba(185, 15, 23, 0.12);
+      --red: #a96f61;
+      --red-deep: #66483f;
+      --red-ink: #332721;
+      --green: #264b3f;
+      --mint: #eef5f0;
+      --blush: #fbf3ef;
+      --cream: #fbf7ee;
+      --paper: #ffffff;
+      --ink: #1e1a17;
+      --muted: #746d68;
+      --line: #e6ddd3;
+      --gold: #b99755;
+      --shadow: 0 18px 38px rgba(69, 54, 43, 0.12);
       --radius: 8px;
     }
 
@@ -37,8 +37,8 @@
     body {
       font-family: Arial, Helvetica, sans-serif;
       color: var(--ink);
-      background: var(--white);
-      line-height: 1.6;
+      background: var(--paper);
+      line-height: 1.55;
       letter-spacing: 0;
     }
 
@@ -61,145 +61,152 @@
       margin-inline: auto;
     }
 
-    .announcement {
-      background: var(--red-600);
-      color: var(--white);
-      font-size: 0.9rem;
+    .promo {
+      background: var(--green);
+      color: var(--paper);
+      font-size: 0.86rem;
+      font-weight: 800;
+      text-transform: uppercase;
     }
 
-    .announcement .container {
-      min-height: 42px;
+    .promo-track {
+      min-height: 38px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      flex-wrap: wrap;
-      padding-block: 8px;
+      gap: 28px;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .promo-track span {
+      flex: 0 0 auto;
     }
 
     .site-header {
       position: sticky;
       top: 0;
-      z-index: 20;
-      background: rgba(255, 255, 255, 0.94);
+      z-index: 30;
+      background: rgba(255, 255, 255, 0.96);
       border-bottom: 1px solid var(--line);
       backdrop-filter: blur(14px);
     }
 
     .nav {
       min-height: 82px;
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      justify-content: space-between;
       gap: 20px;
     }
 
-    .brand {
+    .nav-left,
+    .nav-right {
       display: flex;
       align-items: center;
-      gap: 12px;
-      min-width: 0;
+      gap: 20px;
+      font-size: 0.9rem;
+      font-weight: 900;
+      color: #3d3433;
+    }
+
+    .nav-right {
+      justify-content: flex-end;
+    }
+
+    .nav a:hover {
+      color: var(--green);
+    }
+
+    .brand {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      text-align: center;
     }
 
     .brand img {
-      width: 62px;
-      height: 62px;
+      width: 68px;
+      height: 68px;
       object-fit: contain;
+      border-radius: 50%;
+      background: var(--paper);
       border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--white);
     }
 
     .brand strong {
-      display: block;
-      color: var(--red-700);
-      line-height: 1.1;
-      font-size: 1rem;
-    }
-
-    .brand small {
-      display: block;
-      margin-top: 4px;
-      color: var(--muted);
-      font-weight: 700;
-      font-size: 0.76rem;
-    }
-
-    .navlinks {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-      color: #3f3837;
-      font-size: 0.95rem;
-      font-weight: 800;
-    }
-
-    .navlinks a:hover {
-      color: var(--red-600);
+      color: var(--green);
+      font-size: 0.92rem;
+      line-height: 1;
     }
 
     .menu-button {
       display: none;
       border: 1px solid var(--line);
-      background: var(--rose);
-      color: var(--red-700);
+      background: var(--mint);
+      color: var(--green);
       border-radius: var(--radius);
       padding: 10px 14px;
-      font-weight: 800;
+      font-weight: 900;
       cursor: pointer;
+    }
+
+    .mobile-links {
+      display: none;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 46px;
+      min-height: 44px;
       padding: 12px 18px;
       border: 1px solid transparent;
       border-radius: 999px;
-      font-weight: 800;
+      font-weight: 900;
       line-height: 1.1;
       white-space: nowrap;
       cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
     }
 
     .btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 26px rgba(185, 15, 23, 0.16);
+      box-shadow: 0 12px 24px rgba(38, 75, 63, 0.16);
     }
 
     .btn-primary {
-      background: var(--red-600);
-      color: var(--white);
+      background: var(--green);
+      color: var(--paper);
+    }
+
+    .btn-dark {
+      background: var(--red-deep);
+      color: var(--paper);
     }
 
     .btn-light {
-      background: var(--white);
-      color: var(--red-700);
+      background: var(--paper);
+      color: var(--red-deep);
       border-color: var(--line);
     }
 
-    .btn-green {
-      background: var(--green-900);
-      color: var(--white);
-    }
-
     .hero {
-      min-height: calc(100vh - 124px);
+      min-height: calc(100vh - 120px);
       display: grid;
       align-items: end;
-      color: var(--white);
+      color: var(--paper);
       background:
-        linear-gradient(90deg, rgba(185, 15, 23, 0.94), rgba(185, 15, 23, 0.76) 42%, rgba(6, 63, 42, 0.32)),
+        linear-gradient(90deg, rgba(31, 44, 38, 0.92), rgba(86, 70, 59, 0.68) 46%, rgba(255, 255, 255, 0.08)),
         url("assets/pharmacist-team.jpg");
       background-size: cover;
       background-position: center;
     }
 
     .hero-content {
-      max-width: 800px;
-      padding: 86px 0 76px;
+      max-width: 760px;
+      padding: 86px 0 72px;
     }
 
     .eyebrow {
@@ -207,7 +214,7 @@
       align-items: center;
       gap: 10px;
       margin-bottom: 18px;
-      color: #fff0f0;
+      color: #f5eee5;
       font-size: 0.82rem;
       font-weight: 900;
       text-transform: uppercase;
@@ -223,60 +230,60 @@
     h1,
     h2,
     h3 {
-      line-height: 1.08;
+      line-height: 1.07;
       letter-spacing: 0;
     }
 
     h1 {
-      max-width: 760px;
+      max-width: 720px;
       margin-bottom: 18px;
-      font-size: clamp(2.7rem, 7vw, 5.7rem);
+      font-size: clamp(3rem, 8vw, 6.4rem);
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 700;
     }
 
     .hero-copy {
-      max-width: 690px;
-      color: #fff5f5;
-      font-size: 1.12rem;
+      max-width: 650px;
       margin-bottom: 28px;
+      color: #fff7f7;
+      font-size: 1.1rem;
     }
 
     .hero-actions,
-    .card-actions,
-    .locator-actions {
+    .card-actions {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       gap: 12px;
     }
 
-    .hero-badges {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1px;
-      max-width: 820px;
-      margin-top: 44px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.24);
-      border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(10px);
+    .shop-tabs {
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      padding: 14px 0;
     }
 
-    .hero-badge {
-      padding: 18px;
-      background: rgba(255, 255, 255, 0.08);
+    .shop-tabs .container {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      scrollbar-width: thin;
+      padding-bottom: 2px;
     }
 
-    .hero-badge strong {
-      display: block;
-      color: var(--white);
-      font-size: 1.35rem;
-    }
-
-    .hero-badge span {
-      color: #ffe3e4;
-      font-weight: 700;
-      font-size: 0.92rem;
+    .shop-tab {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 10px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--mint);
+      color: var(--green);
+      font-size: 0.88rem;
+      font-weight: 900;
     }
 
     section {
@@ -295,17 +302,19 @@
 
     .kicker {
       display: inline-block;
-      color: var(--red-600);
+      margin-bottom: 10px;
+      color: var(--red-deep);
       font-size: 0.82rem;
       font-weight: 900;
       text-transform: uppercase;
-      margin-bottom: 10px;
     }
 
     .section-head h2 {
-      color: var(--ink);
-      font-size: clamp(2rem, 4vw, 3.2rem);
       margin-bottom: 14px;
+      color: var(--ink);
+      font-size: clamp(2rem, 4vw, 3.35rem);
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 700;
     }
 
     .section-head p {
@@ -313,151 +322,101 @@
       font-size: 1.04rem;
     }
 
-    .quick-nav {
-      background: var(--cream);
-      border-block: 1px solid var(--line);
-      padding: 18px 0;
-    }
-
-    .quick-nav-grid {
+    .collection-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-    }
-
-    .quick-link {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 54px;
-      padding: 12px;
+      gap: 1px;
       border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--white);
-      color: var(--red-700);
-      font-weight: 900;
-      text-align: center;
+      background: var(--line);
     }
 
-    .category-grid,
-    .product-grid,
-    .concern-grid,
-    .steps-grid {
-      display: grid;
-      gap: 18px;
-    }
-
-    .category-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    .category-card,
-    .product-card,
-    .concern-card,
-    .step-card,
-    .visit-card {
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--white);
-      box-shadow: 0 12px 30px rgba(185, 15, 23, 0.08);
-    }
-
-    .category-card {
-      min-height: 164px;
+    .collection-card {
+      min-height: 190px;
+      padding: 22px;
+      background: var(--paper);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 22px;
     }
 
-    .category-card small {
-      color: var(--red-600);
+    .collection-card small {
+      color: var(--green);
+      font-size: 0.78rem;
       font-weight: 900;
       text-transform: uppercase;
     }
 
-    .category-card h3 {
+    .collection-card h3 {
+      margin-top: 10px;
       color: var(--ink);
-      margin-top: 10px;
-      font-size: 1.25rem;
+      font-size: 1.28rem;
     }
 
-    .category-card p {
+    .collection-card p {
+      margin-top: 10px;
       color: var(--muted);
-      margin-top: 10px;
+      font-size: 0.95rem;
     }
 
-    .showcase {
-      background: var(--rose);
+    .arrivals {
+      background: var(--cream);
       border-block: 1px solid var(--line);
     }
 
-    .showcase-grid {
+    .arrival-grid {
       display: grid;
-      grid-template-columns: 0.86fr 1.14fr;
-      gap: 24px;
-      align-items: stretch;
-    }
-
-    .brand-panel {
-      min-height: 100%;
-      padding: 28px;
-      border-radius: var(--radius);
-      color: var(--white);
-      background:
-        linear-gradient(145deg, rgba(227, 27, 35, 0.94), rgba(185, 15, 23, 0.82)),
-        url("assets/pharmacy-hero.jpg");
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .brand-panel img {
-      width: 132px;
-      height: 132px;
-      object-fit: contain;
-      border-radius: var(--radius);
-      background: var(--white);
-      margin-bottom: 42px;
-    }
-
-    .brand-panel h2 {
-      font-size: clamp(2rem, 4vw, 3.1rem);
-      margin-bottom: 12px;
-    }
-
-    .brand-panel p {
-      max-width: 430px;
-      color: #fff5f5;
-    }
-
-    .product-grid {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
     }
 
     .product-card {
       overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      box-shadow: var(--shadow);
     }
 
-    .product-visual {
-      min-height: 190px;
+    .product-media {
+      min-height: 224px;
       display: grid;
       place-items: center;
-      padding: 22px;
-      background: linear-gradient(135deg, var(--red-100), var(--cream));
+      padding: 26px;
+      background:
+        linear-gradient(135deg, rgba(238, 245, 240, 0.92), rgba(251, 247, 238, 0.96));
       border-bottom: 1px solid var(--line);
     }
 
+    .product-body {
+      padding: 18px;
+    }
+
+    .product-body small {
+      color: var(--red-deep);
+      font-size: 0.76rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .product-body h3 {
+      margin: 8px 0 10px;
+      color: var(--ink);
+      font-size: 1.08rem;
+    }
+
+    .product-body p {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
     .packshot {
-      width: 82px;
-      height: 132px;
       position: relative;
-      border-radius: 18px 18px 8px 8px;
-      background: var(--white);
-      box-shadow: 0 18px 26px rgba(185, 15, 23, 0.18);
-      border: 1px solid rgba(185, 15, 23, 0.18);
+      width: 82px;
+      height: 138px;
+      border: 1px solid rgba(102, 72, 63, 0.18);
+      border-radius: 18px 18px 7px 7px;
+      background: var(--paper);
+      box-shadow: 0 18px 28px rgba(69, 54, 43, 0.16);
     }
 
     .packshot::before {
@@ -468,28 +427,34 @@
       width: 38px;
       height: 20px;
       border-radius: 6px 6px 2px 2px;
-      background: var(--red-600);
+      background: var(--red-deep);
     }
 
     .packshot::after {
       content: "BV";
       position: absolute;
-      inset: 42px 14px auto;
+      inset: 44px 14px auto;
       height: 44px;
       display: grid;
       place-items: center;
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
-      color: var(--red-600);
+      color: var(--red-deep);
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.8rem;
+      font-size: 1.75rem;
+    }
+
+    .packshot.tube {
+      width: 74px;
+      height: 154px;
+      border-radius: 10px 10px 28px 28px;
     }
 
     .packshot.jar {
-      width: 116px;
+      width: 118px;
       height: 92px;
-      border-radius: 24px 24px 12px 12px;
       margin-top: 40px;
+      border-radius: 26px 26px 12px 12px;
     }
 
     .packshot.jar::before {
@@ -498,101 +463,181 @@
       width: 80px;
       height: 30px;
       border-radius: 16px 16px 4px 4px;
-      background: var(--green-900);
+      background: var(--green);
     }
 
     .packshot.jar::after {
       inset: 28px 16px auto;
       height: 34px;
-      color: var(--green-900);
+      color: var(--green);
     }
 
-    .product-body {
-      padding: 22px;
+    .story-grid {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 42px;
+      align-items: center;
     }
 
-    .product-body small {
-      color: var(--red-600);
+    .story-photo {
+      min-height: 520px;
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, rgba(169, 111, 97, 0.08), rgba(38, 75, 63, 0.1)),
+        url("assets/pharmacy-hero.jpg");
+      background-size: cover;
+      background-position: center;
+      box-shadow: var(--shadow);
+    }
+
+    .story-points {
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .story-point {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+    }
+
+    .story-point span {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--green);
+      color: var(--paper);
       font-weight: 900;
-      text-transform: uppercase;
     }
 
-    .product-body h3 {
-      margin: 8px 0;
-      font-size: 1.18rem;
-    }
-
-    .product-body p {
-      color: var(--muted);
-    }
-
-    .concern-grid {
-      grid-template-columns: repeat(4, 1fr);
-    }
-
-    .concern-card {
-      min-height: 122px;
-      padding: 18px;
-    }
-
-    .concern-card strong {
+    .story-point strong {
       display: block;
-      color: var(--red-700);
-      margin-bottom: 8px;
+      color: var(--ink);
+      margin-bottom: 3px;
     }
 
-    .concern-card span {
+    .story-point p {
       color: var(--muted);
       font-size: 0.94rem;
     }
 
+    .concerns {
+      background: var(--mint);
+      border-block: 1px solid var(--line);
+    }
+
+    .concern-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .concern-card {
+      min-height: 118px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+    }
+
+    .concern-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--green);
+    }
+
+    .concern-card span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
     .regimen {
-      background: var(--green-900);
-      color: var(--white);
+      background: var(--green);
+      color: var(--paper);
     }
 
     .regimen .kicker,
     .regimen .section-head h2,
     .regimen .section-head p {
-      color: var(--white);
+      color: var(--paper);
     }
 
-    .steps-grid {
+    .steps {
+      display: grid;
       grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.2);
       counter-reset: step;
     }
 
-    .step-card {
-      position: relative;
-      min-height: 196px;
+    .step {
+      min-height: 210px;
       padding: 22px;
       background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(255, 255, 255, 0.18);
-      box-shadow: none;
-      color: var(--white);
     }
 
-    .step-card::before {
+    .step::before {
       counter-increment: step;
       content: "0" counter(step);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 44px;
-      height: 44px;
+      display: inline-grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
       margin-bottom: 22px;
       border-radius: 50%;
-      background: var(--white);
-      color: var(--green-900);
+      background: var(--paper);
+      color: var(--green);
       font-weight: 900;
     }
 
-    .step-card h3 {
+    .step h3 {
       margin-bottom: 10px;
     }
 
-    .step-card p {
+    .step p {
       color: #d8f6e4;
+    }
+
+    .service-strip {
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      padding: 24px 0;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .service-item {
+      min-height: 104px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+    }
+
+    .service-item strong {
+      color: var(--ink);
+      margin-bottom: 5px;
+    }
+
+    .service-item span {
+      color: var(--muted);
+      font-size: 0.9rem;
     }
 
     .visit {
@@ -601,32 +646,61 @@
 
     .visit-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 0.9fr 1.1fr;
       gap: 22px;
       align-items: stretch;
     }
 
     .visit-card {
       padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .visit-card.logo-card {
+      display: grid;
+      place-items: center;
+      text-align: center;
+      background: var(--green);
+      color: var(--paper);
+    }
+
+    .visit-card.logo-card img {
+      width: 170px;
+      height: 170px;
+      object-fit: contain;
+      margin-bottom: 18px;
+      border-radius: var(--radius);
+      background: var(--paper);
     }
 
     .visit-card h3 {
-      color: var(--ink);
       margin-bottom: 12px;
+      color: var(--ink);
+    }
+
+    .visit-card.logo-card h3 {
+      color: var(--paper);
     }
 
     .visit-card p {
-      color: var(--muted);
       margin-bottom: 12px;
+      color: var(--muted);
+    }
+
+    .visit-card.logo-card p {
+      color: #d8f0e3;
     }
 
     .visit-card strong {
-      color: var(--red-700);
+      color: var(--red-deep);
     }
 
     footer {
-      background: #151111;
-      color: #d9caca;
+      background: #171111;
+      color: #dfcaca;
       padding: 42px 0 28px;
     }
 
@@ -638,14 +712,14 @@
 
     footer h3,
     footer h4 {
-      color: var(--white);
       margin-bottom: 12px;
+      color: var(--paper);
     }
 
     footer a {
       display: block;
       margin: 8px 0;
-      color: #d9caca;
+      color: #dfcaca;
     }
 
     .copyright {
@@ -656,28 +730,42 @@
     }
 
     @media (max-width: 980px) {
-      .navlinks {
-        position: fixed;
-        top: 124px;
-        left: 16px;
-        right: 16px;
-        display: none;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 10px;
-        padding: 16px;
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        background: var(--white);
-        box-shadow: var(--shadow);
+      .nav {
+        grid-template-columns: 1fr auto;
       }
 
-      .navlinks.open {
-        display: flex;
+      .brand {
+        align-items: flex-start;
+        text-align: left;
+        flex-direction: row;
+      }
+
+      .nav-left,
+      .nav-right {
+        display: none;
       }
 
       .menu-button {
         display: inline-flex;
+      }
+
+      .mobile-links {
+        position: fixed;
+        top: 120px;
+        left: 16px;
+        right: 16px;
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--paper);
+        box-shadow: var(--shadow);
+      }
+
+      .mobile-links.open {
+        display: flex;
       }
 
       .hero {
@@ -688,19 +776,19 @@
         padding: 72px 0 58px;
       }
 
-      .hero-badges,
-      .quick-nav-grid,
-      .category-grid,
-      .showcase-grid,
+      .collection-grid,
+      .arrival-grid,
+      .story-grid,
       .concern-grid,
-      .steps-grid,
+      .steps,
+      .service-grid,
       .visit-grid,
       .footer-grid {
         grid-template-columns: 1fr;
       }
 
-      .product-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .story-photo {
+        min-height: 380px;
       }
     }
 
@@ -710,28 +798,24 @@
         height: 54px;
       }
 
-      .brand small {
-        display: none;
+      .brand strong {
+        font-size: 0.86rem;
       }
 
       .nav {
-        min-height: 76px;
+        min-height: 74px;
       }
 
-      .navlinks {
-        top: 118px;
+      .mobile-links {
+        top: 112px;
       }
 
       h1 {
-        font-size: clamp(2.4rem, 15vw, 3.8rem);
+        font-size: clamp(2.6rem, 16vw, 4rem);
       }
 
       .hero-content {
         padding: 58px 0 46px;
-      }
-
-      .product-grid {
-        grid-template-columns: 1fr;
       }
 
       .btn {
@@ -755,27 +839,39 @@
   </style>
 </head>
 <body>
-  <div class="announcement">
-    <div class="container">
-      <span>BV SKINCARE by Bountyvine Pharmacy Plus Ltd</span>
-      <span>Original skincare, beauty, and dermatology care in Port Harcourt.</span>
+  <div class="promo">
+    <div class="container promo-track" aria-label="BV SKINCARE store notices">
+      <span>Original skincare products</span>
+      <span>Routine support available in store</span>
+      <span>Bath, body, face, sunscreen, and dermatology care</span>
     </div>
   </div>
 
   <header class="site-header">
     <nav class="container nav" aria-label="BV SKINCARE navigation">
-      <a class="brand" href="bv-skincare.html" aria-label="BV SKINCARE home">
-        <img src="assets/bv-skincare-logo.svg" alt="BV SKINCARE logo" />
-        <span>
-          <strong>BV SKINCARE</strong>
-          <small>Skincare division of Bountyvine Pharmacy Plus Ltd</small>
-        </span>
-      </a>
-      <button class="menu-button" id="menuButton" type="button" aria-label="Toggle navigation">Menu</button>
-      <div class="navlinks" id="navLinks">
+      <div class="nav-left">
         <a href="index.html">Bountyvine Home</a>
         <a href="#collections">Collections</a>
-        <a href="#regimen">Regimen</a>
+        <a href="#arrivals">New Arrivals</a>
+      </div>
+
+      <a class="brand" href="bv-skincare.html" aria-label="BV SKINCARE home">
+        <img src="assets/bv-skincare-logo.svg" alt="BV SKINCARE logo" />
+        <strong>BV SKINCARE</strong>
+      </a>
+
+      <div class="nav-right">
+        <a href="#concerns">Skin Concerns</a>
+        <a href="#visit">Visit Store</a>
+        <a class="btn btn-primary" href="https://wa.me/2349167202831" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+
+      <button class="menu-button" id="menuButton" type="button" aria-label="Toggle navigation">Menu</button>
+      <div class="mobile-links" id="mobileLinks">
+        <a href="index.html">Bountyvine Home</a>
+        <a href="#collections">Collections</a>
+        <a href="#arrivals">New Arrivals</a>
+        <a href="#concerns">Skin Concerns</a>
         <a href="#visit">Visit Store</a>
         <a class="btn btn-primary" href="https://wa.me/2349167202831" target="_blank" rel="noopener">WhatsApp</a>
       </div>
@@ -786,107 +882,118 @@
     <section class="hero" id="top">
       <div class="container">
         <div class="hero-content">
-          <span class="eyebrow">Skincare, beauty, dermatology care</span>
+          <span class="eyebrow">Beauty, body care, face care</span>
           <h1>BV SKINCARE</h1>
           <p class="hero-copy">
-            A focused skincare and beauty destination for trusted body care, face care, sunscreens, baby care,
-            acne support, anti-aging products, serums, moisturizers, and dermatology care.
+            Skincare and beauty essentials under the Bountyvine Pharmacy Plus Ltd network, curated for practical routines,
+            clearer choices, and confident product support.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#collections">Explore Collections</a>
-            <a class="btn btn-light" href="https://wa.me/2349167202831" target="_blank" rel="noopener">Ask for Product Help</a>
-          </div>
-          <div class="hero-badges" aria-label="BV SKINCARE highlights">
-            <div class="hero-badge"><strong>9</strong><span>Skincare categories</span></div>
-            <div class="hero-badge"><strong>Rx</strong><span>Pharmacy-backed guidance</span></div>
-            <div class="hero-badge"><strong>PH</strong><span>Port Harcourt location</span></div>
+            <a class="btn btn-primary" href="#collections">Shop Collections</a>
+            <a class="btn btn-light" href="#arrivals">View Product Groups</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="quick-nav" aria-label="Quick skincare navigation">
-      <div class="container quick-nav-grid">
-        <a class="quick-link" href="#collections">Collections</a>
-        <a class="quick-link" href="#products">Featured Picks</a>
-        <a class="quick-link" href="#concerns">Skin Concerns</a>
-        <a class="quick-link" href="#visit">Visit or Chat</a>
+    <div class="shop-tabs" aria-label="Skincare category shortcuts">
+      <div class="container">
+        <a class="shop-tab" href="#bath-body">Bath &amp; Body</a>
+        <a class="shop-tab" href="#face-care">Face Care</a>
+        <a class="shop-tab" href="#sunscreens">Sunscreens</a>
+        <a class="shop-tab" href="#baby-care">Baby Care</a>
+        <a class="shop-tab" href="#asian-beauty">Asian Beauty</a>
+        <a class="shop-tab" href="#acne-care">Acne Care</a>
+        <a class="shop-tab" href="#anti-aging">Anti-Aging</a>
+        <a class="shop-tab" href="#derm-care">Dermatology Care</a>
       </div>
-    </section>
+    </div>
 
     <section id="collections">
       <div class="container">
         <div class="section-head center">
           <span class="kicker">Our collections</span>
-          <h2>Shop by skincare need, routine step, or skin concern.</h2>
+          <h2>Browse BV SKINCARE by routine, concern, or product type.</h2>
           <p>
-            Inspired by category-rich skincare stores, BV SKINCARE keeps products easy to browse by practical customer needs.
+            The page uses a skincare-store structure with quick categories, product-style groups, skin concerns,
+            and regimen guidance for customers.
           </p>
         </div>
 
-        <div class="category-grid">
-          <article class="category-card"><small>Body</small><h3>Bath &amp; Body</h3><p>Body washes, moisturizers, oils, scrubs, and daily body care essentials.</p></article>
-          <article class="category-card"><small>Face</small><h3>Face Care</h3><p>Cleansers, toners, masks, exfoliators, and everyday face routine support.</p></article>
-          <article class="category-card"><small>Protection</small><h3>Sunscreens</h3><p>Daily sun protection options for different skin types and lifestyles.</p></article>
-          <article class="category-card"><small>Family</small><h3>Baby Care</h3><p>Gentle skincare, hygiene, and protection products for babies and children.</p></article>
-          <article class="category-card"><small>K-Beauty</small><h3>Asian Beauty</h3><p>Popular Asian beauty-inspired products for hydration, glow, and skin barrier care.</p></article>
-          <article class="category-card"><small>Treatment</small><h3>Acne &amp; Treatment Care</h3><p>Support for blemishes, breakouts, dark spots, and treatment-led routines.</p></article>
-          <article class="category-card"><small>Age care</small><h3>Anti-Aging</h3><p>Products focused on firmness, fine lines, tone, texture, and skin renewal.</p></article>
-          <article class="category-card"><small>Hydration</small><h3>Serums &amp; Moisturizers</h3><p>Targeted serums, creams, gels, and moisturizers for daily skin comfort.</p></article>
-          <article class="category-card"><small>Derm care</small><h3>Dermatology Care</h3><p>Pharmacy-backed product guidance for sensitive, reactive, and concern-led skin.</p></article>
+        <div class="collection-grid">
+          <article class="collection-card" id="bath-body"><div><small>Body</small><h3>Bath &amp; Body</h3><p>Body wash, oils, scrubs, lotions, and everyday body care essentials.</p></div><a href="#visit">Ask availability</a></article>
+          <article class="collection-card" id="face-care"><div><small>Face</small><h3>Face Care</h3><p>Cleansers, toners, masks, exfoliators, and face routine basics.</p></div><a href="#visit">Ask availability</a></article>
+          <article class="collection-card" id="sunscreens"><div><small>Protection</small><h3>Sunscreens</h3><p>Daily protection options for indoor, outdoor, and reapplication needs.</p></div><a href="#visit">Ask availability</a></article>
+          <article class="collection-card" id="baby-care"><div><small>Family</small><h3>Baby Care</h3><p>Gentle skincare, hygiene, and protection products for children.</p></div><a href="#visit">Ask availability</a></article>
+          <article class="collection-card" id="asian-beauty"><div><small>K-Beauty</small><h3>Asian Beauty</h3><p>Hydrating, glow-focused, and barrier-care inspired products.</p></div><a href="#visit">Ask availability</a></article>
+          <article class="collection-card" id="acne-care"><div><small>Treatment</small><h3>Acne &amp; Treatment Care</h3><p>Product support for blemishes, spots, and texture-led routines.</p></div><a href="#visit">Ask availability</a></article>
+          <article class="collection-card" id="anti-aging"><div><small>Age care</small><h3>Anti-Aging</h3><p>Routine options for fine lines, firmness, renewal, and even tone.</p></div><a href="#visit">Ask availability</a></article>
+          <article class="collection-card"><div><small>Hydration</small><h3>Serums &amp; Moisturizers</h3><p>Targeted hydration, barrier support, creams, gels, and serums.</p></div><a href="#visit">Ask availability</a></article>
+          <article class="collection-card" id="derm-care"><div><small>Derm care</small><h3>Dermatology Care</h3><p>Pharmacy-backed product guidance for sensitive and concern-led skin.</p></div><a href="#visit">Ask availability</a></article>
+          <article class="collection-card"><div><small>Support</small><h3>Routine Help</h3><p>Ask the team how to combine products and avoid overloading your skin.</p></div><a href="https://wa.me/2349167202831" target="_blank" rel="noopener">WhatsApp</a></article>
+          <article class="collection-card"><div><small>Restock</small><h3>Back In Stock</h3><p>Use WhatsApp to confirm current availability and new shelf arrivals.</p></div><a href="https://wa.me/2349167202831" target="_blank" rel="noopener">Check now</a></article>
+          <article class="collection-card"><div><small>Visit</small><h3>In-Store Advice</h3><p>Visit the Bountyvine location for practical skincare support.</p></div><a href="#visit">Get directions</a></article>
         </div>
       </div>
     </section>
 
-    <section class="showcase" id="products">
-      <div class="container showcase-grid">
-        <div class="brand-panel">
-          <img src="assets/bv-skincare-logo.svg" alt="BV SKINCARE logo" />
-          <div>
-            <h2>Original skincare, selected with care.</h2>
-            <p>
-              Ask the BV SKINCARE team for current availability, prices, and product guidance before starting a new routine.
-            </p>
-          </div>
+    <section class="arrivals" id="arrivals">
+      <div class="container">
+        <div class="section-head center">
+          <span class="kicker">Product groups</span>
+          <h2>Skincare storefront sections for the current catalogue.</h2>
+          <p>These product-style cards can be replaced with real product names, prices, and images when the inventory list is ready.</p>
         </div>
 
+        <div class="arrival-grid">
+          <article class="product-card">
+            <div class="product-media"><div class="packshot tube"></div></div>
+            <div class="product-body"><small>Cleanser</small><h3>Daily Face Cleansers</h3><p>Gentle routine starters for oily, dry, sensitive, and combination skin.</p></div>
+          </article>
+          <article class="product-card">
+            <div class="product-media"><div class="packshot"></div></div>
+            <div class="product-body"><small>Sunscreen</small><h3>Lightweight SPF</h3><p>Everyday protection options for glow, comfort, and outdoor exposure.</p></div>
+          </article>
+          <article class="product-card">
+            <div class="product-media"><div class="packshot jar"></div></div>
+            <div class="product-body"><small>Moisturizer</small><h3>Barrier Creams</h3><p>Hydration support for dry, tight, irritated, or over-treated skin.</p></div>
+          </article>
+          <article class="product-card">
+            <div class="product-media"><div class="packshot tube"></div></div>
+            <div class="product-body"><small>Treatment</small><h3>Acne &amp; Spot Care</h3><p>Targeted support for blemishes, dark marks, rough texture, and congestion.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container story-grid">
+        <div class="story-photo" role="img" aria-label="BV SKINCARE pharmacy beauty display"></div>
         <div>
           <div class="section-head">
-            <span class="kicker">Featured picks</span>
-            <h2>Routine-friendly product groups.</h2>
-            <p>These are display groups for the static website. Real product names and prices can be added when the shop catalogue is ready.</p>
+            <span class="kicker">Why BV SKINCARE</span>
+            <h2>Beauty retail with pharmacy-backed care.</h2>
+            <p>
+              BV SKINCARE lives inside the Bountyvine healthcare network, so the experience can feel like a beauty store
+              while still staying grounded in careful product guidance.
+            </p>
           </div>
-
-          <div class="product-grid">
-            <article class="product-card">
-              <div class="product-visual"><div class="packshot"></div></div>
-              <div class="product-body"><small>Cleanse</small><h3>Gentle Face Cleansers</h3><p>Daily cleansing support for oily, dry, combination, and sensitive skin types.</p></div>
-            </article>
-            <article class="product-card">
-              <div class="product-visual"><div class="packshot jar"></div></div>
-              <div class="product-body"><small>Protect</small><h3>Sunscreen Essentials</h3><p>Lightweight protection options for daily outdoor exposure and routine finishing.</p></div>
-            </article>
-            <article class="product-card">
-              <div class="product-visual"><div class="packshot"></div></div>
-              <div class="product-body"><small>Treat</small><h3>Acne &amp; Dark Spot Care</h3><p>Targeted support for blemishes, discoloration, rough texture, and uneven tone.</p></div>
-            </article>
-            <article class="product-card">
-              <div class="product-visual"><div class="packshot jar"></div></div>
-              <div class="product-body"><small>Hydrate</small><h3>Serums &amp; Moisturizers</h3><p>Barrier-supporting hydration products for glow, comfort, and routine balance.</p></div>
-            </article>
+          <div class="story-points">
+            <div class="story-point"><span>1</span><div><strong>Original product focus</strong><p>Products are positioned around trust, quality, and responsible sourcing.</p></div></div>
+            <div class="story-point"><span>2</span><div><strong>Routine-first guidance</strong><p>Customers can ask for help choosing products by skin concern and routine step.</p></div></div>
+            <div class="story-point"><span>3</span><div><strong>Healthcare network support</strong><p>The skincare brand operates from the Bountyvine Pharmacy Plus Ltd location.</p></div></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="concerns">
+    <section class="concerns" id="concerns">
       <div class="container">
         <div class="section-head center">
           <span class="kicker">Skin concerns</span>
-          <h2>Find product guidance around common skincare goals.</h2>
-          <p>BV SKINCARE can help customers narrow choices by concern, skin type, and preferred routine step.</p>
+          <h2>Navigate products by what your skin needs.</h2>
+          <p>Customers can use these concerns to start a conversation with the BV SKINCARE team.</p>
         </div>
-
         <div class="concern-grid">
           <div class="concern-card"><strong>Acne &amp; blemishes</strong><span>Breakouts, clogged pores, and spot care.</span></div>
           <div class="concern-card"><strong>Dark spots</strong><span>Hyperpigmentation and uneven tone support.</span></div>
@@ -894,7 +1001,7 @@
           <div class="concern-card"><strong>Oil control</strong><span>Lightweight routines for shine-prone skin.</span></div>
           <div class="concern-card"><strong>Texture</strong><span>Rough, bumpy, or dull-looking skin.</span></div>
           <div class="concern-card"><strong>Anti-aging</strong><span>Fine lines, firmness, and smoother-looking skin.</span></div>
-          <div class="concern-card"><strong>Sensitive skin</strong><span>Gentle, careful product selection.</span></div>
+          <div class="concern-card"><strong>Sensitive skin</strong><span>Careful product selection for reactive skin.</span></div>
           <div class="concern-card"><strong>Baby care</strong><span>Simple, gentle skin care for children.</span></div>
         </div>
       </div>
@@ -905,47 +1012,47 @@
         <div class="section-head center">
           <span class="kicker">Simple regimen</span>
           <h2>Build a routine around consistent steps.</h2>
-          <p>For treatment products or active ingredients, customers should ask the pharmacy team for usage guidance.</p>
+          <p>For active ingredients or treatment products, customers should ask the pharmacy team for usage guidance.</p>
         </div>
-
-        <div class="steps-grid">
-          <article class="step-card"><h3>Cleanse</h3><p>Start with a cleanser matched to your skin type and daily routine.</p></article>
-          <article class="step-card"><h3>Treat</h3><p>Use targeted products for acne, dark spots, texture, or other concerns.</p></article>
-          <article class="step-card"><h3>Moisturize</h3><p>Support the skin barrier with hydration that feels comfortable.</p></article>
-          <article class="step-card"><h3>Protect</h3><p>Finish morning routines with sunscreen and reapply when needed.</p></article>
+        <div class="steps">
+          <article class="step"><h3>Cleanse</h3><p>Start with a cleanser matched to your skin type and daily routine.</p></article>
+          <article class="step"><h3>Treat</h3><p>Use targeted products for acne, dark spots, texture, or other concerns.</p></article>
+          <article class="step"><h3>Moisturize</h3><p>Support the skin barrier with hydration that feels comfortable.</p></article>
+          <article class="step"><h3>Protect</h3><p>Finish morning routines with sunscreen and reapply when needed.</p></article>
         </div>
       </div>
     </section>
 
+    <div class="service-strip">
+      <div class="container service-grid">
+        <div class="service-item"><strong>Original Products</strong><span>Quality-focused skincare selection.</span></div>
+        <div class="service-item"><strong>Routine Support</strong><span>Ask for product and step guidance.</span></div>
+        <div class="service-item"><strong>Store Pickup</strong><span>Visit the Bountyvine location.</span></div>
+        <div class="service-item"><strong>WhatsApp Help</strong><span>Confirm availability before visiting.</span></div>
+      </div>
+    </div>
+
     <section class="visit" id="visit">
-      <div class="container">
-        <div class="section-head center">
-          <span class="kicker">Visit BV SKINCARE</span>
-          <h2>Shop in store or ask for help on WhatsApp.</h2>
-          <p>BV SKINCARE operates from the same address as Bountyvine Pharmacy Plus Ltd.</p>
-        </div>
-
-        <div class="visit-grid">
-          <article class="visit-card">
-            <h3>Store address</h3>
-            <p><strong>BV SKINCARE</strong></p>
-            <p>22 Shell Location Road, Off Ada George Road, Mgbuoba, Port Harcourt.</p>
-            <div class="card-actions" style="margin-top: 18px;">
-              <a class="btn btn-primary" href="https://maps.app.goo.gl/rG7TtUD1USgWd1Xz6" target="_blank" rel="noopener">Open Map</a>
-              <a class="btn btn-light" href="index.html#locator">Find Nearest Store</a>
-            </div>
-          </article>
-
-          <article class="visit-card">
-            <h3>Product guidance</h3>
-            <p>Ask about available products, routine suggestions, skincare categories, and suitable options for your needs.</p>
-            <p><strong>Phone:</strong> <a href="tel:+2349167202831">+234 916 720 2831</a></p>
-            <div class="card-actions" style="margin-top: 18px;">
-              <a class="btn btn-green" href="https://wa.me/2349167202831" target="_blank" rel="noopener">Chat on WhatsApp</a>
-              <a class="btn btn-light" href="index.html">Back to Bountyvine</a>
-            </div>
-          </article>
-        </div>
+      <div class="container visit-grid">
+        <article class="visit-card logo-card">
+          <img src="assets/bv-skincare-logo.svg" alt="BV SKINCARE logo" />
+          <h3>BV SKINCARE</h3>
+          <p>Skincare and beauty division of Bountyvine Pharmacy Plus Ltd.</p>
+        </article>
+        <article class="visit-card">
+          <div class="section-head">
+            <span class="kicker">Visit or chat</span>
+            <h2>Shop in store or ask for product help.</h2>
+            <p>BV SKINCARE operates from the same address as Bountyvine Pharmacy Plus Ltd.</p>
+          </div>
+          <p><strong>Address:</strong> 22 Shell Location Road, Off Ada George Road, Mgbuoba, Port Harcourt.</p>
+          <p><strong>Phone:</strong> <a href="tel:+2349167202831">+234 916 720 2831</a></p>
+          <div class="card-actions" style="margin-top: 18px;">
+            <a class="btn btn-primary" href="https://maps.app.goo.gl/rG7TtUD1USgWd1Xz6" target="_blank" rel="noopener">Open Map</a>
+            <a class="btn btn-dark" href="https://wa.me/2349167202831" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="btn btn-light" href="index.html">Back to Bountyvine</a>
+          </div>
+        </article>
       </div>
     </section>
   </main>
@@ -959,7 +1066,7 @@
       <div>
         <h4>Quick Links</h4>
         <a href="#collections">Collections</a>
-        <a href="#products">Featured Picks</a>
+        <a href="#arrivals">Product Groups</a>
         <a href="#concerns">Skin Concerns</a>
         <a href="#visit">Visit Store</a>
       </div>
@@ -976,17 +1083,17 @@
   </footer>
 
   <script>
-    const navLinks = document.getElementById("navLinks");
+    const mobileLinks = document.getElementById("mobileLinks");
     const menuButton = document.getElementById("menuButton");
 
     document.getElementById("year").textContent = new Date().getFullYear();
 
     menuButton.addEventListener("click", () => {
-      navLinks.classList.toggle("open");
+      mobileLinks.classList.toggle("open");
     });
 
-    document.querySelectorAll(".navlinks a").forEach((link) => {
-      link.addEventListener("click", () => navLinks.classList.remove("open"));
+    document.querySelectorAll(".mobile-links a").forEach((link) => {
+      link.addEventListener("click", () => mobileLinks.classList.remove("open"));
     });
   </script>
 </body>
